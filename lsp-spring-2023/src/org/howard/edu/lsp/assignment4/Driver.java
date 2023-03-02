@@ -47,6 +47,10 @@ public class Driver {
 		System.out.println("| Removing 5 from set1 using set1.remove(5) ");
 		set1.remove(5);
 		System.out.println("| Values of set1 after removing 5 -> " + set1.toString());
+		System.out.println("| Again Removing 5 from set1 using set1.remove(5) ");
+		set1.remove(5);
+		System.out.println("| Values of set1 before calling set1.remove(5) again -> " + set1.toString());
+		System.out.println("| Removing 5 again, Note removing a element that is not present does nothing -> " + set1.toString());
 		System.out.println("");
 		
 		System.out.println("            Initializing and applying functions for set2   ");
