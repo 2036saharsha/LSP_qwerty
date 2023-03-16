@@ -19,6 +19,8 @@ public class IntegerSetTest {
 			setA.add(numbers[i]);
 		}
 		assertEquals("[6, 2, 9, 4, 5]",setA.toString());
+		setA.add(6);
+		assertNotEquals("[6, 2, 9, 4, 5, 6]", setA.toString());
 		assertNotEquals("[]", setA.toString());
 		assertNotEquals("[1,2,3]", setA.toString());			
 	}
@@ -47,9 +49,17 @@ public class IntegerSetTest {
 		}
 		setA.remove(6);
 		setA.remove(2);
+		
 		assertEquals("[9, 4, 5]",setA.toString());
 		assertNotEquals("[]", setA.toString());
-		assertNotEquals("[1,2,3]", setA.toString());			
+		assertNotEquals("[6,2,9,4,5]", setA.toString());
+		
+		IntegerSet setb= new IntegerSet();
+		setA.remove(2);
+		assertEquals("[]",setb.toString());
+		
+			
+		
 	}
 
 	@Test
@@ -190,7 +200,7 @@ public class IntegerSetTest {
 	@DisplayName("test largest")
 	public void testLargest() throws Exception {
 		IntegerSet setA= new IntegerSet();
-		int[] numbers = {1,2,3,4,5,500,1000};
+		int[] numbers = {100,900,600,800};
 		for (int i = 0; i < numbers.length; i ++) {
 			setA.add(numbers[i]);
 		}
@@ -199,7 +209,7 @@ public class IntegerSetTest {
 		for (int i = 0; i < numbers1.length; i ++) {
 			setB.add(numbers1[i]);
 		}
-		assertEquals(1000,setA.largest());
+		assertEquals(900,setA.largest());
 		assertEquals(700,setB.largest());
 	}
 
@@ -221,7 +231,7 @@ public class IntegerSetTest {
 	@DisplayName("test smallest")
 	public void testSmallest() throws Exception {
 		IntegerSet setA= new IntegerSet();
-		int[] numbers = {1,2,3,4,5,500,1000};
+		int[] numbers = {100,900,600,800};
 		for (int i = 0; i < numbers.length; i ++) {
 			setA.add(numbers[i]);
 		}
@@ -230,7 +240,7 @@ public class IntegerSetTest {
 		for (int i = 0; i < numbers1.length; i ++) {
 			setB.add(numbers1[i]);
 		}
-		assertEquals(1,setA.smallest());
+		assertEquals(100,setA.smallest());
 		assertEquals(1,setB.smallest());
 	}
 
