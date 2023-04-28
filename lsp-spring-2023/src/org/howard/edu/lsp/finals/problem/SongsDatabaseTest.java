@@ -4,20 +4,26 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
+import java.util.HashSet;
 class SongsDatabaseTest {
+
+	private static final int HashSet = 0;
 
 	@Test
 	@DisplayName("Test for addSongs")
 	public void testAddSong() {
 		SongsDatabase database1= new SongsDatabase();
 		database1.addSong("Pop","Blinding Lights");
-		
+	
 		assertTrue(database1.getSongs("Pop").contains("Blinding Lights"));
+		
 		database1.addSong("Rock","Stairway to Heaven");
 		database1.addSong("Pop","Sweet Child O' Mine");
+		
 		assertFalse(database1.getSongs("Rock").contains("Sweet Child O' Mine"));
 		assertTrue(database1.getSongs("Pop").contains("Sweet Child O' Mine"));
 	}
@@ -29,17 +35,26 @@ class SongsDatabaseTest {
 		database1.addSong("Pop","Blinding Lights");
 		
 		assertEquals(1, database1.getSongs("Pop").size());
-		
 		assertTrue(database1.getSongs("Pop").contains("Blinding Lights"));
+		
 		database1.addSong("Rock","Stairway to Heaven");
 		database1.addSong("Pop","Sweet Child O' Mine");
 		
 		assertFalse(database1.getSongs("Rock").contains("Sweet Child O' Mine"));
 		assertTrue(database1.getSongs("Pop").contains("Sweet Child O' Mine"));
 		
+		Set<String> Songs = new HashSet<>();
+		Songs.add("Blinding Lights");
+		Songs.add("Sweet Child O' Mine");
+		
+		assertEquals(Songs, database1.getSongs("Pop"));
+		
+		
 		
 	}
 	
+
+
 	@Test
 	@DisplayName("Test for getGenreOfSong")
 	public void testGetGenreOfSong() {
